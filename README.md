@@ -9,10 +9,14 @@ Após completar o build
 
 `docker-compose up -d`
 
-Após levantar a imagem, será necessário realizar a instalação das dependências
+Existe um alias do sail se preferir, como a [documentação sugere aqui](https://laravel.com/docs/11.x/sail#configuring-a-shell-alias)
 
-`npm install -y --legacy-peer-deps`
+# Instalando as dependências
 
-Se preferir execute o script pronto
+Após levantar criar o container, será necessário realizar a instalação das dependências
 
-`sh ~/npm-install.sh`
+`composer install` e `npm install -y --legacy-peer-deps`
+
+Se preferir execute os scripts prontos
+
+`sh ./docker/scripts/composer-install.sh && ./docker/scripts/npm-install.sh`
