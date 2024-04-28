@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINER="eventhub-eventhub-1"
+CONTAINER="eventhub-app-1"
 
 # Verifica se o contêiner está em execução
 if [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null)" = "true" ]; then
