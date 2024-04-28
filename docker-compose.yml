@@ -1,5 +1,5 @@
 services:
-    eventhub:
+    app:
         build:
             context: ./docker/8.3
             dockerfile: Dockerfile
