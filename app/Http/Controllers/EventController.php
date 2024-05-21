@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Resources\EventResource;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -11,47 +14,32 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('events.app');
+        return view('events.app', ['events' => Event::all()]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id = null)
     {
-        //
+        $event = !is_null($id) ? Event::findOrFail($id) : new Event();
+        return view('events.form', ['event' => $event]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request, string $id = null)
     {
-        //
-    }
+        $validated = $request->validated();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $event = !is_null($id) ? Event::findOrFail($id) : new Event();
+        $event->title = $request->title;
+        $event->subtitle = $request->subtitle;
+        $event->description = $request->description;
+        $event->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return new EventResource($event);
     }
 
     /**
@@ -59,6 +47,6 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Event::deleted($id);
     }
 }
