@@ -1,13 +1,14 @@
-<div class="row gy-3">
-    <div class="col-sm-4">
-        <x-event class="event-small"/>
-    </div>
+@props([
+    'events',
+    'size' => 'col-sm-12',
+    'direction' => '',
+])
 
-    <div class="col-sm-4">
-        <x-event class="event-small"/>
-    </div>
+<div @class(['row gy-3',  $direction])>
 
-    <div class="col-sm-4">
-        <x-event class="event-small"/>
-    </div>
+    @for ($i = 0; $i < count($events); $i++)
+        <div @class([$size])>
+            <x-event class="event-small" :event="$events[$i]"/>
+        </div>
+    @endfor
 </div>
