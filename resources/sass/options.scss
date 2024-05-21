@@ -1,0 +1,14 @@
+
+.icon-increase {
+    svg {
+        transition: font-size 0.3s ease;
+        cursor: pointer;
+    }
+
+    &:hover {
+        svg {
+            font-size: 1.5em;
+            transition: font-size 0.3s ease;
+        }
+    }
+}
