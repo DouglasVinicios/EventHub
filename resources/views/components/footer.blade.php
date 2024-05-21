@@ -1,4 +1,4 @@
-<footer class="bg-dark text-light fixed-bottom p-3">
+<footer class="bg-dark bg-body-tertiary text-light p-3" data-bs-theme="dark">
     <div class="d-flex justify-content-evenly">
         <p>Author: Douglas Vinicios</p>
         <address>
